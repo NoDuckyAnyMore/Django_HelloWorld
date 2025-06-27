@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "goods",
+    "mqtt_client",
     'drf_yasg',
     "rest_framework",
     "django.contrib.admin",
@@ -41,6 +42,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+# MQTT配置
+MQTT_BROKER_HOST = "117.72.16.85"
+MQTT_BROKER_PORT = 1883  # 使用标准MQTT端口
+MQTT_TOPICS = ["testtopic/1"]  # 使用列表形式，支持多个主题
+MQTT_CLIENT_ID = "django-mqtt-client"
+# 如果你的MQTT broker需要认证，取消下面两行的注释并填入正确的值
+# MQTT_USERNAME = "your_username"
+# MQTT_PASSWORD = "your_password"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
