@@ -1,3 +1,4 @@
 Django==5.2
 djangorestframework==3.16.0
 drf_yasg==1.21.10
+paho_mqtt==2.1.0
