@@ -9,7 +9,9 @@ logger = logging.getLogger(__name__)
 
 class MQTTClient:
     def __init__(self):
-        self.client = mqtt.Client()
+        # 从Django设置中获取客户端ID，如果没有设置则使用默认值
+        client_id = getattr(settings, 'MQTT_CLIENT_ID', 'django-mqtt-client')
+        self.client = mqtt.Client(client_id=client_id)
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
         self.client.on_disconnect = self.on_disconnect
