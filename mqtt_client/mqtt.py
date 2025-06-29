@@ -38,13 +38,16 @@ class MQTTClient:
         """当客户端连接到MQTT broker时的回调"""
         if rc == 0:
             print("Connected to MQTT broker")
+            logger.info("Connected to MQTT broker")
             # 订阅配置的主题
             topics = getattr(settings, 'MQTT_TOPICS', ['#'])  # 默认订阅所有主题
             for topic in topics:
                 self.client.subscribe(topic)
                 print(f"Subscribed to topic: {topic}")
+                logger.info(f"Subscribed to topic: {topic}")
         else:
             print(f"Failed to connect to MQTT broker with code: {rc}")
+            logger.info(f"Failed to connect to MQTT broker with code: {rc}")
 
     def on_message(self, client, userdata, msg):
         """当收到MQTT消息时的回调"""
